@@ -1,8 +1,10 @@
-package ru.itis.inform.store.services;
+package ru.itis.inform.store;
 
 import ru.itis.inform.store.dao.ItemsDao;
 import ru.itis.inform.store.dao.ItemsDaoFileBasedImpl;
 import ru.itis.inform.store.dao.models.Item;
+import ru.itis.inform.store.services.StoreService;
+import ru.itis.inform.store.services.StoreServiceImpl;
 
 import java.io.IOException;
 
@@ -14,6 +16,7 @@ public class wer {
         StoreService ss = new StoreServiceImpl(new ItemsDaoFileBasedImpl("/Users/admin/IdeaProjects/ITIS/Store/src/main/java/ru/itis/inform/store/res/data.txt"));
         ss.buy("pen");
         boolean item = ss.isExist("brains");
+
 
     }
 }

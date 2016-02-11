@@ -1,8 +1,8 @@
 package ru.itis.inform.store.dao.models;
 
 public class Item {
-    String itemName;
-    int amount;
+    private String itemName;
+    private int amount;
 
     public Item(String itemName, int amount) {
         this.itemName = itemName;
@@ -15,5 +15,9 @@ public class Item {
 
     public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    public String getItemName() {
+        return itemName;
     }
 }

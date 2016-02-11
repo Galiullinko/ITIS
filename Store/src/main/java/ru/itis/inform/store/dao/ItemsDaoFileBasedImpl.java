@@ -55,10 +55,13 @@ public class ItemsDaoFileBasedImpl implements ItemsDao{
     @Override
     public Item select(String itemName) {
         Item item = hashMap.get(itemName);
-        if (item.getAmount() == 0 || item == null)
+        if (item == null)
             return null;
         else
-            return item;
+            if (item.getAmount() == 0)
+                return null;
+            else
+                return item;
     }
 
 
