@@ -1,5 +1,9 @@
 package ru.itis.inform.store.dao.models;
 
+import com.google.common.base.MoreObjects;
+
+import java.util.Objects;
+
 public class Item {
     private String itemName;
     private int amount;
@@ -19,5 +23,29 @@ public class Item {
 
     public String getItemName() {
         return itemName;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.itemName, this.amount);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+
+        Item that = (Item) obj;
+
+        return Objects.equals(this.itemName, that.itemName) && Objects.equals(this.amount, that.amount);
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("Name", itemName)
+                .add("Amount", amount)
+                .toString();
     }
 }

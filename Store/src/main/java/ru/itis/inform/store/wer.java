@@ -15,8 +15,9 @@ public class wer {
     public static void main(String[] args) throws IOException {
         StoreService ss = new StoreServiceImpl(new ItemsDaoFileBasedImpl("/Users/admin/IdeaProjects/ITIS/Store/src/main/java/ru/itis/inform/store/res/data.txt"));
         ss.buy("pen");
-        boolean item = ss.isExist("brains");
-
+        boolean b = ss.isExist("brains");
+        Item item = new Item("Halva", 0);
+        System.out.println(item);
 
     }
 }
