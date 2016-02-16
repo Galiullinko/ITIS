@@ -14,7 +14,7 @@ import static org.mockito.Mockito.*;
 /**
  * Created by Galiullin_ko on 11/02/16.
  */
-public class tests {
+public class MockTest {
     public static void main(String[] args) throws IOException {
         StoreService ss = new StoreServiceImpl(mocking());
         System.out.println(ss.isExist("cow"));
