@@ -20,11 +20,11 @@ public class StoreServiceImpl implements StoreService {
 
     public void buy(String itemName) {
         itemsDao.delete(itemName);
-        log.info("Buy StoreServiceImpl");
+        log.info("Buy StoreServiceImpl: " + itemName);
     }
 
     public boolean isExist(String itemName) {
-        log.info("isExist StoreServiceImpl");
+        log.info("isExist StoreServiceImpl: " + itemName);
         return itemsDao.select(itemName) != null;
     }
 }

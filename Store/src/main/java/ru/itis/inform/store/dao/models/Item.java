@@ -13,6 +13,10 @@ public class Item {
         this.amount = amount;
     }
 
+    public Item(String itemName) {
+        this.itemName = itemName;
+    }
+
     public int getAmount() {
         return amount;
     }

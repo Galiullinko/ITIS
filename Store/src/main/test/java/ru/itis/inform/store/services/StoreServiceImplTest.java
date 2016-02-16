@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import ru.itis.inform.store.dao.ItemsDao;
+import ru.itis.inform.store.dao.models.Item;
 import ru.itis.inform.store.services.StoreServiceImpl;
 
 import static org.junit.Assert.*;
@@ -28,8 +29,8 @@ public class StoreServiceImplTest {
         doThrow(new IllegalArgumentException()).when(itemsDao).select(anyString());
         // Делаем stubbing на удаление товара с именем Tovar
         doNothing().when(itemsDao).delete("Tovar");
-        // Делаем stubbing на select товара с именем Tovar
-        doNothing().when(itemsDao).select("Tovar");
+        // Делаем return на select товара с именем Tovar
+        doReturn(new Item("Tovar")).when(itemsDao).select("Tovar");
 
         testedStoreService = new StoreServiceImpl(itemsDao);
     }
@@ -45,7 +46,7 @@ public class StoreServiceImplTest {
     // Проверяем, корректно ли прошло выполнение метода isExist при входном значении Tovar
     @Test
     public void testIsExist() throws Exception {
-        testedStoreService.isExist("Tovar");
+        assertTrue(testedStoreService.isExist("Tovar"));
         // Проверяем, был ли вызван метод delete
         verify(itemsDao).select("Tovar");
     }
@@ -58,6 +59,6 @@ public class StoreServiceImplTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testIsExistOnIncorrectData() {
-        testedStoreService.isExist("Not tovar");
+        assertFalse(testedStoreService.isExist("Not tovar"));
     }
 }
