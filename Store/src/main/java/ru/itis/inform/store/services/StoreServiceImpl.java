@@ -8,10 +8,12 @@ import ru.itis.inform.store.dao.ItemsDao;
 
 public class StoreServiceImpl implements StoreService {
 
-    ApplicationContext context =
-            new ClassPathXmlApplicationContext("app-context.xml");
+    private ItemsDao itemsDao;
 
-    ItemsDao itemsDao = (ItemsDao)context.getBean("itemsDao", ItemsDao.class);
+
+    public void setDao(ItemsDao itemsDao) {
+        this.itemsDao = itemsDao;
+    }
 
     private static final Logger log = Logger.getLogger(StoreServiceImpl.class);
 

@@ -1,6 +1,8 @@
 package ru.itis.inform.store.services;
 
 
+import ru.itis.inform.store.dao.ItemsDao;
+
 public interface StoreService {
     /**
      * Покупка товара по имени
@@ -15,4 +17,6 @@ public interface StoreService {
      * false - в противном случае
      */
     boolean isExist(String itemName);
+
+    void setDao(ItemsDao itemsDao);
 }
