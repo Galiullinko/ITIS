@@ -16,20 +16,10 @@ import static org.mockito.Mockito.*;
  */
 public class MockTest {
     public static void main(String[] args) throws IOException {
-        StoreService ss = new StoreServiceImpl(mocking());
-        System.out.println(ss.isExist("cow"));
-        System.out.println(ss.isExist("VasiliyIvanovich"));
+        StoreService ss = new StoreServiceImpl();
+        System.out.println(ss.isExist("pen"));
+        System.out.println(ss.isExist("toy"));
         System.out.println(ss.isExist("rat"));
     }
 
-    private static ItemsDao mocking() {
-        ItemsDao dao = mock(ItemsDaoFileBasedImpl.class);
-        Item item1 = new Item("cow", 12);
-        Item item2 = new Item("rat", 3);
-        Item item3 = new Item("VasiliyIvanovich", 1);
-        when(dao.select("cow")).thenReturn(item1);
-        when(dao.select("rat")).thenReturn(item2);
-        when(dao.select("VasiliyIvanovish")).thenReturn(item1);
-        return dao;
-    }
 }

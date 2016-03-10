@@ -2,21 +2,19 @@ package ru.itis.inform.store.services;
 
 
 import org.apache.log4j.Logger;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import ru.itis.inform.store.dao.ItemsDao;
-import ru.itis.inform.store.dao.ItemsDaoFileBasedImpl;
-import ru.itis.inform.store.dao.models.Item;
-
-import java.io.IOException;
 
 public class StoreServiceImpl implements StoreService {
 
-    ItemsDao itemsDao;
+    ApplicationContext context =
+            new ClassPathXmlApplicationContext("app-context.xml");
+
+    ItemsDao itemsDao = (ItemsDao)context.getBean("itemsDao", ItemsDao.class);
+
     private static final Logger log = Logger.getLogger(StoreServiceImpl.class);
 
-    public StoreServiceImpl(ItemsDao itemsDao) {
-        this.itemsDao = itemsDao;
-        log.info("Constructor StoreServiceImpl");
-    }
 
     public void buy(String itemName) {
         itemsDao.delete(itemName);

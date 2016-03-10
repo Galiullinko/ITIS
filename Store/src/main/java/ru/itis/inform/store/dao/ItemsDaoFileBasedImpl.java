@@ -11,12 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.stream.Stream;
 
-public class ItemsDaoFileBasedImpl implements ItemsDao{
-    // TODO: реализовать класс, возможно с использованием
-    // сериализации ArrayList, либо просто считывать данные из
-    // файла в ArrayList
-    // проект с гитхаба сфоркать, и доделать в своем репозитории
-    // как у Абрамского
+public class ItemsDaoFileBasedImpl implements ItemReader{
     HashMap<String, Item> hashMap = null;
     BufferedReader br = null;
 
@@ -42,27 +37,7 @@ public class ItemsDaoFileBasedImpl implements ItemsDao{
         }
     }
 
-    @Override
-    public void delete(String itemName) {
-        Item item = hashMap.get(itemName);
-        int value = item.getAmount();
-        value--;
-        item.setAmount(value);
-        if(value >= 0)
-            hashMap.replace(itemName, item);
+    public HashMap<String, Item> getHashMap() {
+        return hashMap;
     }
-
-    @Override
-    public Item select(String itemName) {
-        Item item = hashMap.get(itemName);
-        if (item == null)
-            return null;
-        else
-            if (item.getAmount() == 0)
-                return null;
-            else
-                return item;
-    }
-
-
 }
